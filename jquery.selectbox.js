@@ -1,5 +1,5 @@
 /*!
- * jQuery Selectbox plugin 0.4
+ * jQuery Selectbox plugin 0.3
  *
  * Copyright 2011-2015, Dimitar Ivanov (http://www.bulgaria-web-developers.com/projects/javascript/selectbox/)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
@@ -188,7 +188,7 @@
             child = $("<a>", {
               "href": "#" + that.val(),
               "rel": that.val(),
-              "accesskey": that.text().charAt(0).toLowerCase()
+              "x-accesskey": that.text().charAt(0).toLowerCase()
             }).text(that.text()).bind("click.sb", function (e) {
               if (e && e.preventDefault) {
                 e.preventDefault();
@@ -275,32 +275,39 @@
           case 9: //Tab
             if (trgt) {
               var inst = self._getInst(trgt);
-              if (inst/* && inst.isOpen*/) {
+              var wasOpen = inst.isOpen;
+              if (inst && inst.isOpen) {
                 if ($f.length > 0) {
                   self._changeSelectbox(trgt, $f.attr("rel"), $f.text());
                 }
                 self._closeSelectbox(trgt);
               }
+              if( trgt && inst && !wasOpen ) {
+                self._openSelectbox(trgt);
+              }
             }
-            var i = parseInt($this.attr("tabindex"), 10);
-            if (!e.shiftKey) {
-              i++;
-            } else {
-              i--;
+            if( trgt && inst && !inst.isOpen ) {
+              var i = parseInt($this.attr("tabindex"), 10);
+              if (!e.shiftKey) {
+                i++;
+              } else {
+                i--;
+              }
+              $("*[tabindex='" + i + "']").focus();
             }
-            $("*[tabindex='" + i + "']").focus();
             break;
           case 27: //Escape
             self._closeSelectbox(trgt);
             break;
         }
         if(/[a-z0-9]/i.test(e.key) && -1 === ccIgnore.indexOf(key)) {
+          var $next = [];
           $("a", $this).removeClass(inst.settings.classFocus);
           if ($f.length > 0) {
-            $next = $f.parent().nextAll("li:has(a)").eq(0).find("a[accesskey='"+e.key+"']");
+            $next = $f.parent().nextAll("li:has(a)").eq(0).find("a[x-accesskey='"+e.key+"']");
           }
           if ($next.length === 0) {
-            $next = $this.find("ul").find("a[accesskey='"+e.key+"']").eq(0);
+            $next = $this.find("ul").find("a[x-accesskey='"+e.key+"']").eq(0);
           }
           if ($next.length > 0 ) {
             $next.addClass(inst.settings.classFocus).focus();
