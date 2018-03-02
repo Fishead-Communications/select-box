@@ -1,5 +1,5 @@
 /*!
- * jQuery Selectbox plugin 0.3
+ * jQuery Selectbox plugin 1.0.4
  *
  * Copyright 2011-2015, Dimitar Ivanov (http://www.bulgaria-web-developers.com/projects/javascript/selectbox/)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.

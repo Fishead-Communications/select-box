@@ -1,21 +1,35 @@
 {
   "name": "select-box",
-  "version: "0.4",
-  "description": "Makes your titles or url's SEO friendly",
-  "keywords": ["jquery", "select", "selectbox", "dropdown"],
-  "homepage": "https://github.com/Fishead-Communications/select-box",
-  "bugs": "https://github.com/Fishead-Communications/select-box/issues",
-  "license": "MIT",
-  "author": {
-    "name": "Dimitar Ivanov",
-    "url": "http://zinoui.com"
+  "version": "1.0.4",
+  "description": "Custom select box replacement inspired by jQuery UI",
+  "main": "jquery.selectbox.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fishead-Communications/select-box.git"
+    "url": "git+https://github.com/Fishead-Communications/select-box.git"
   },
+  "keywords": [
+    "selectbox",
+    "select",
+    "box",
+    "jquery",
+    "gui",
+    "dropdown"
+  ],
+  "author": "Dimitar Ivanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fishead-Communications/select-box/issues"
+  },
+  "homepage": "https://github.com/Fishead-Communications/select-box#readme",
   "dependencies": {
-    "jquery": "*"
-  },
-  "main": "jquery.selectbox.js"
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  }
 }
